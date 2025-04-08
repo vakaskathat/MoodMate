@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodMate - Sweet & Savage</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 182, 193, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 20px rgba(255, 182, 193, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 182, 193, 0);
+      }
+    }
+
+    @keyframes rotateIn {
+      from {
+        transform: rotate(-200deg);
+        opacity: 0;
+      }
+      to {
+        transform: rotate(0);
+        opacity: 1;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+      padding: 20px;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+  <script>
+    const girlLines = [
+      "Tumhari muskurahat toh dil chura le gayi 😍",
+      "Tum jaise cute log Google pe bhi nahi milte ❤️",
+      "Tumhara naam lete hi smile aa jati hai 😚",
+      "Tumhare bina toh Instagram bhi boring lage 🥺",
+      "Tum ho toh har season Spring lagta hai 🌸",
+      "Tumhari DP ne toh aankhon ka WiFi on kar diya 😍",
+      "Jitni baar dekhta hoon... utni baar fida ho jata hoon 💘",
+      "Tumhare bina toh filter bhi bekaar lagta hai 😅",
+      "Tumhari aankhon mein koi nasha hai kya? 😵",
+      "Jab tum hasta ho toh lagta hai duniya theek hai 🥹",
+      "Tum meri screen ka favorite notification ho 💌",
+      "Tumhare bina WhatsApp bhi suna suna lagta hai 📱",
+      "Tum ho toh sab kuch aesthetic lagta hai ✨",
+      "Teri hansi Zoom call ki highlight hoti hai 😂",
+      "Tum kuch zyada hi khubsurat ho ya main andha hoon? 👀",
+      "Tumhare naam pe ek poem likhni hai mujhe ✍️",
+      "Tumhara style toh fashion se aage nikal gaya 😎",
+      "Tumko dekh ke toh Bluetooth bhi automatically connect ho gaya 🔗",
+      "Tum smile karte ho toh dil ringtone bajata hai 🎶",
+      "Tumhari awaaz toh direct heart ko Bluetooth connect karti hai 💓",
+      "Tum itni pyari ho ki tumhare naam pe festival hona chahiye 🎉",
+      "Tumse milke toh meri battery 100% ho gayi 🔋",
+      "Tum Instagram story nahi ho, highlight ho! 🌟",
+      "Tere jaise log toh explore page pe bhi rare milte hain 🔍",
+      "Tumhare bina toh filter bhi udas lagta hai 😢",
+      "Tum ho toh selfie automatic cute ban jaati hai 🤳",
+      "Tere chehre pe lightroom ka filter bhi sharma jaye 😳",
+      "Tum ek walking talking sunshine ho ☀️",
+      "Tujhse baat karke neend bhi smile karti hai 💤",
+      "Tere jaisa best friend har kisi ko milna chahiye 🫶",
+      "Tu toh khud ek aesthetic wallpaper hai 🎨",
+      "Tumhare naam se toh notification aayi aur mood ban gaya 😍",
+      "Tum khud mein ek sparkle ho ✨",
+      "Tumhare bina emoji bhi bore ho jaate hain 😶",
+      "Tumhare liye toh Google bhi search chhod de 🛑",
+      "Teri voice mere alarm se zyada energetic hai 🔊",
+      "Tu toh woh dream ho jo offline bhi yaad rehta hai 🌙",
+      "Tumko dekhke Photoshop bhi confuse ho jaye 🖼️",
+      "Tum har angle se perfect ho 📸",
+      "Tumhari smile WiFi se tez connect hoti hai ⚡",
+      "Tumhare bina toh DMs bhi khali lagte hain 📭",
+      "Tum toh ek walking good vibe ho 💫",
+      "Tere naam se toh autocorrect bhi pyaar karne lage 😅",
+      "Tumse milne ke baad dil mein ringtones bajti rehti hain 🎵",
+      "Tum toh woh moment ho jo main baar-baar jeena chahta hoon 🔁",
+      "Tumhi ho toh har din special lagta hai 🎈",
+      "Tum sirf cute nahi, full-on adorable ho 🐼",
+      "Tumhare liye toh smiley emoji bhi blush kar jaye 🥰",
+      "Tere jaise log status nahi legend hote hain 👑"
+    ];
+
+    const boyLines = [
+      "Bhai tu toh itna single hai, WiFi bhi connection tod deta hai 😂",
+      "Tujhe dekh ke toh traffic bhi U-turn le leta hai 🛑",
+      "Tu toh wo joke hai jo sirf tu hi samajhta hai 😆",
+      "Bhai teri DP dekh ke to camera bhi hang ho gaya 📷🔥",
+      "Tera swag WhatsApp status ka last seen ban chuka hai 💀",
+      "Tujhse impress hone se acha phone silent pe daal lu 🤐",
+      "Bhai tu itna cool hai ki AC bhi tujhe block kar de 😎",
+      "Tu toh wo error hai jo refresh karne se bhi nahi jaata 😭",
+      "Tu hai toh duniya mein logic nahi bacha 🤯",
+      "Teri profile dekh ke phone ne khud ko restart kar liya 🔁",
+      "Tera attitude toh SIM card ke signal jaisa hai – kabhi aata, kabhi nahi 📶",
+      "Bhai tu toh permanent mute mode mein rehta hai 🔇",
+      "Tera fashion sense toh 404 not found hai 🤖",
+      "Tu toh vo legend hai jo class mein bhi recess leta hai 🍔",
+      "Tu itna lazy hai ki Google bhi search karne se mana kare 🔍",
+      "Bhai tu toh calculator mein bhi galti karwa de 🤓",
+      "Tera style dekh ke mannequins bhi resign de de 🛍️",
+      "Tere jaise logon ke liye warning label hona chahiye ⚠️",
+      "Tu hi vo banda hai jisko prank karna risky hota hai 🎭",
+      "Tera naam sunte hi autocorrect bhi confuse ho jata hai 📲",
+      "Tu toh vo meme hai jo sab dekhte hain par tag nahi karte 📸",
+      "Tujhse milke toh WiFi ka password bhool gaya main 📡",
+      "Teri logic toh gym jaane se bhi nahi sudhregi 💪",
+      "Tu Instagram pe famous nahi, notorious hai 🕵️",
+      "Tujhse baat karke lagta hai phone silent pe daal doon 📴",
+      "Tu ho toh sab kuch buffering lagta hai 🔄",
+      "Bhai tu itna unique hai ki recycle bin bhi tujhe preserve karta hai 🗑️",
+      "Tera swag dekh ke monkey emoji bhi hairaan ho gaya 🙈",
+      "Tu toh woh typo hai jisse edit karne ka mann hi nahi karta ✍️",
+      "Tere jaise bhai ke saath selfie mein zoom karna padta hai 🔍",
+      "Tu aur tera style - dono hi reboot maangte hain 🔄",
+      "Teri story dekh ke data pack regret karta hai 📶",
+      "Tera dimaag toh Windows XP pe chal raha hai 💾",
+      "Bhai tu toh life ka prank ho jo viral nahi hua 😹",
+      "Tere jokes sunke Siri ne khud ko update kar liya 🔊",
+      "Tera attitude dekh ke filter bhi crash ho gaya 💥",
+      "Tu hai toh sab kuch extra slow lagta hai 🐢",
+      "Bhai tu toh vo caption hai jisse kisi ne likha hi nahi ✨",
+      "Tera presence power-saving mode mein daal deta hai 🔋",
+      "Tu itna dramatic hai ki daily soap bhi tujhse sharma jaaye 📺",
+      "Tere bina meme industry chal hi nahi sakti 🤯",
+      "Tu toh notification ka typo hai 🔔",
+      "Bhai tu vo error 500 hai – server bhi confuse 😵‍💫",
+      "Tu toh offline bhi annoying ho 🤷‍♂️",
+      "Tera swag dekh ke emojis bhi block kar gaye 😵",
+      "Tere level ka troll banana mushkil hi nahi, namumkin hai 💣",
+      "Tu zindagi mein vo glitch hai jo patch hone ka naam hi nahi leta 🎮",
+      "Bhai tu toh reality show mein blooper ban jaaye 🤦",
+      "Tera logic calculator ko cry karwa de 😭"
+    ];
+  </script>
+</head>
+<body>
+  <header>Made by Vakas Kathat 💻</header>
+</body>
+</html>
